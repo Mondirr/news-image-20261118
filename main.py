@@ -18,6 +18,8 @@ DST = os.path.join(OUT_DIR, "entry.png")
 def main() -> int:
     os.makedirs(OUT_DIR, exist_ok=True)
     shutil.copyfile(SRC, DST)
+    if os.path.getsize(SRC) != os.path.getsize(DST):
+        raise SystemExit("copied image size differs from source")
     return 0
 
 
